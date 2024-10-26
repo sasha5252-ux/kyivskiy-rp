@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Киевский РП - Форум</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Киевский РП</h1>
+        <nav>
+            <a href="#registration">Регистрация</a>
+            <a href="#forum">Форум</a>
+        </nav>
+    </header>
+
+    <section id="forum">
+        <h2>Форум</h2>
+        <form id="postForm">
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Отправить</button>
+        </form>
+
+        <div id="posts">
+            <h3>Сообщения:</h3>
+            <ul id="postList"></ul>
+        </div>
+    </section>
+
+    <script>
+        const postForm = document.getElementById('postForm');
+        const postList = document.getElementById('postList');
+
+        postForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const message = document.getElementById('message').value;
+
+            const li = document.createElement('li');
+            li.textContent = `${username}: ${message}`;
+            postList.appendChild(li);
+
+            postForm.reset();
+        });
+    </script>
+</body>
+</html>
